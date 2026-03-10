@@ -30,10 +30,18 @@ const registerUser = async (req, res) => {
   res.redirect("/auth/login");
 };
 
+const signup = async (req, res) => {
+  const { name, email, password } = req.body;
+  const hashedPassword = await bcrypt.hash(password, 10);
+  password = hashedPassword;
+  await userModel.create({ name, email, password: hashedPassword });
+  res.json({ message: "User Created" });
+};
+
 const logout = (req, res) => {
   req.session.destroy();
-  res.locals.user = null
+  res.locals.user = null;
   res.render("auth/login");
 };
 
-export { login, validateUser, register, registerUser,logout };
+export { login, validateUser, register, registerUser, logout };
