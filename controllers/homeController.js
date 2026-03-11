@@ -1,4 +1,4 @@
 const homePage = (req, res) => {
-  res.render("index");
+  res.render("home/index");
 };
 export default homePage
