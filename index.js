@@ -39,7 +39,7 @@ app.use((req, res, next) => {
 app.use("/auth", authRouter);
 app.use("/store", storeRouter);
 app.use("/orders",authenticateUser,orderRouter)
-app.use("/", authenticateAdmin, homeRouter);
+app.use("/admin", authenticateAdmin, homeRouter);
 app.use("/products", authenticateAdmin, productRouter);
 app.use("/users", authenticateAdmin, userRouter);
 
