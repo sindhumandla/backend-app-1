@@ -10,6 +10,7 @@ import storeRouter from "./routes/storeRoute.js";
 import homeRouter from "./routes/homeRoute.js";
 import authRouter from "./routes/authRoute.js";
 import userRouter from "./routes/userRoute.js";
+import apiRouter from "./routes/apiRoute.js";
 
 
 const app = express();
@@ -35,7 +36,7 @@ app.use((req, res, next) => {
   res.locals.user = req.session.user;
   next();
 });
-
+app.use("/api", apiRouter);
 app.use("/auth", authRouter);
 app.use("/store", storeRouter);
 app.use("/", authenticateAdmin, homeRouter);
